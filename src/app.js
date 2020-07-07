@@ -20,6 +20,10 @@ app.get('/', (req, res) => {
     res.send('Hello, world!')
 })
 
+app.get('/api/*', (req, res) => {
+    res.json({ok: true});
+})
+
 //error handler middleware
 app.use(function errorHandler(error, req, res, next) {
     let response
