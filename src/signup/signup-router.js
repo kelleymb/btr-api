@@ -7,7 +7,6 @@ const jsonParser = express.json()
 
 const bcrypt = require('bcrypt')
 const saltRounds = 10
-const plainTextPassword = 'mypass123'
 
 const serializeUser = user => ({
     id: user.id,
@@ -44,7 +43,8 @@ signupRouter
             return next({status: 400, message: 'Oops! Password cannot exceed 60 characters.'})
         }
 
-        bcrypt.hash(plainTextPassword, saltRounds, (err, hash) => {
+        bcrypt.hash(newUser.password, saltRounds, (err, hash) => {
+            newUser.password = hash
             SignUpService.insertUser(knexInstance, newUser)
             .then( user => {
                 res
