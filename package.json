@@ -10,7 +10,7 @@
     "migrate": "postgrator --config postgrator-config.js",
     "migrate:test": "env NODE_ENV=test npm run migrate",
     "migrate:production": "heroku run npm run migrate",
-    "predeploy": "npm audit",
+    "predeploy": "",
     "deploy": "git push heroku master"
   },
   "keywords": [],
@@ -20,10 +20,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.0",
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "helmet": "^3.22.0",
+    "knex": "^0.21.1",
     "morgan": "^1.10.0",
     "pg": "^8.2.2",
     "postgrator-cli": "^4.0.0",
