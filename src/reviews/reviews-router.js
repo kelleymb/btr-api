@@ -39,35 +39,11 @@ reviewsRouter
                 res
                     .status(200)
                     .json(reviews.map(review => {
-                        serializeReview(review)}
+                        return serializeReview(review)}
                     ))
                     console.log(reviews.map(review => serializeReview(review)))
             })
             .catch(next)
     })
-
-// reviewsRouter
-//     .route('/:rating')
-//     .get((req, res, next) => {
-//         const { rating } = req.params
-//         const reqRating = { rating }
-
-//         const knexInstance = req.app.get('db')
-
-//         ReviewsService.getByRating(knexInstance, reqRating)
-//             .then(rating => {
-//                 if (!rating) {
-//                     return res.status(404).json({
-//                         error: { message: `Oops! There are no reviews available for this rating.` }
-//                     })
-//                 } else {
-//                     next()
-//                 }
-//                 res
-//                     .status(200)
-//                     .json(serializeReview(rating))
-//             })
-//             .catch(next)
-//     })
 
 module.exports = reviewsRouter
