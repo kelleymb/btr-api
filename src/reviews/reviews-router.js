@@ -29,9 +29,13 @@ reviewsRouter
         console.log(reqRating)
         console.log(rating)
 
-        if (rating !== Number) {
+        const ratingNumber = Number(rating)
+
+        if (!ratingNumber) {
+            console.log(typeof ratingNumber)
             return res.status(400).json({ error: { message: `Oops, rating must be a number` }})
         }
+
 
         ReviewsService.getByRating(knexInstance, reqRating)
             .then(rating => {
