@@ -12,21 +12,13 @@ const serializeReview = review => ({
     created: review.created
 })
 
-//this isn't working
-// const convertRatingToInt = function (req, res, next) {
-//     req.query = parseInt(req.query)
-//     next()
-// }
-
 reviewsRouter
     .route('/')
     .get((req, res, next) => {
         const { rating } = req.query
-        const reqRating = { rating }
 
         const knexInstance = req.app.get('db')
 
-        console.log(reqRating)
         console.log(rating)
 
         const ratingNumber = Number(rating)
@@ -37,18 +29,19 @@ reviewsRouter
         }
 
 
-        ReviewsService.getByRating(knexInstance, reqRating)
-            .then(rating => {
-                if (!rating) {
+        ReviewsService.getByRating(knexInstance, ratingNumber)
+            .then(reviews => {
+                if (!reviews) {
                     return res.status(404).json({
                         error: { message: `Oops! There are no reviews available for this rating.` }
                     })
-                } else {
-                    next()
-                }
+                } 
                 res
                     .status(200)
-                    .json(serializeReview(rating))
+                    .json(reviews.map(review => {
+                        serializeReview(review)}
+                    ))
+                    console.log(reviews.map(review => serializeReview(review)))
             })
             .catch(next)
     })

@@ -4,6 +4,6 @@ CREATE TABLE reviews (
     title TEXT NOT NULL,
     author TEXT NOT NULL,
     content TEXT NOT NULL,
-    rating INTEGER CHECK (rating > 0 and rating < 6),
+    rating INTEGER CHECK (rating > 0 and rating < 6) NOT NULL,
     created TIMESTAMP DEFAULT now() NOT NULL
 );
