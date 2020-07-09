@@ -5,13 +5,18 @@ const cors = require('cors')
 const { CLIENT_ORIGIN } = require('./config')
 const helmet = require('helmet')
 const { NODE_ENV } = require('./config')
+
 const signupRouter = require('./signup/signup-router')
 const signinRouter = require('./signin/signin-router')
+const logoutRouter = require('./logout/logout-router')
+const reviewsRouter = require('./reviews/reviews-router')
+const addreviewRouter = require('./addreview/addreview-router')
 
 const session = require('express-session')
 const flash = require('express-flash')
 const methodOverride = require('method-override')
 const passport = require('passport')
+
 
 const app = express()
 
@@ -44,6 +49,9 @@ app.get('/api/*', (req, res) => {
 
 app.use('/signup', signupRouter)
 app.use('/signin', signinRouter)
+app.use('/logout', logoutRouter)
+app.use('/reviews', reviewsRouter)
+app.use('/add', addreviewRouter)
 
 //error handler middleware
 app.use(function errorHandler(error, req, res, next) {

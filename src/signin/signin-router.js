@@ -7,13 +7,11 @@ const jsonParser = express.json()
 signinRouter
     .route('/')
     .get((req, res) => {
-        res.send('SignIn get request is working!')
+        res.send('User has logged out!')
     })
     .post(jsonParser, (req, res, next) => {
         const { email, password } = req.body
         const user = { email, password } 
-        const knexInstance = req.app.get('db')
-        console.log(req.body)
         
         const initializePassport = require('./passport-config')
         
@@ -35,18 +33,6 @@ signinRouter
             .send('Login Successful!')
             .json(user)
     })
-        
-
-signinRouter
-    .route('/logout')
-    .get((req, res) => {
-        res.send('Logout get request is working!')
-    })
-    .delete((req, res) => {
-        req.logOut()
-        req.redirect('/')
-    })
-
 
 
 module.exports = signinRouter
