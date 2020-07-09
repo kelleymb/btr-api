@@ -12,16 +12,24 @@ const serializeReview = review => ({
     created: review.created
 })
 
+//this isn't working
+// const convertRatingToInt = function (req, res, next) {
+//     req.query = parseInt(req.query)
+//     next()
+// }
+
 reviewsRouter
     .route('/')
     .get((req, res, next) => {
         const { rating } = req.query
-        const reqRating = Number({ rating })
+        const reqRating = { rating }
 
         const knexInstance = req.app.get('db')
 
+        console.log(reqRating)
+        console.log(rating)
+
         if (rating !== Number) {
-            console.log(rating)
             return res.status(400).json({ error: { message: `Oops, rating must be a number` }})
         }
 
