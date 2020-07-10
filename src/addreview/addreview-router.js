@@ -20,8 +20,8 @@ addreviewRouter
         res.send('Add reviews get request is working!')
     })
     .post(jsonParser, (req, res, next) => {
-        const { title, author, content, rating } = req.body
-        const newReview = { title, author, content, rating }
+        const { title, author, content, rating, user_name } = req.body
+        const newReview = { title, author, content, rating, user_name }
 
         if (!title) {
             return next({ status: 400, message: 'Title is required' })
