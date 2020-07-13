@@ -6,17 +6,16 @@ const { CLIENT_ORIGIN } = require('./config')
 const helmet = require('helmet')
 const { NODE_ENV } = require('./config')
 
-const signupRouter = require('./signup/signup-router')
-const signinRouter = require('./signin/signin-router')
-const logoutRouter = require('./logout/logout-router')
+const signUpRouter = require('./signup/signup-router')
+const signInRouter = require('./signin/signin-router')
+const signOutRouter = require('./signout/signout-router')
 const reviewsRouter = require('./reviews/reviews-router')
-const addreviewRouter = require('./addreview/addreview-router')
+const addReviewRouter = require('./addreview/addreview-router')
 
 const session = require('express-session')
 const flash = require('express-flash')
 const methodOverride = require('method-override')
 const passport = require('passport')
-
 
 const app = express()
 
@@ -47,11 +46,11 @@ app.get('/api/*', (req, res) => {
     res.json({ok: true});
 })
 
-app.use('/signup', signupRouter)
-app.use('/signin', signinRouter)
-app.use('/logout', logoutRouter)
+app.use('/signup', signUpRouter)
+app.use('/signin', signInRouter)
+app.use('/signout', signOutRouter)
 app.use('/reviews', reviewsRouter)
-app.use('/add', addreviewRouter)
+app.use('/add', addReviewRouter)
 
 //error handler middleware
 app.use(function errorHandler(error, req, res, next) {

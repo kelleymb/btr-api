@@ -2,7 +2,7 @@ const express = require('express')
 const xss = require('xss')
 const AddReviewService = require('./addreview-service')
 
-const addreviewRouter = express.Router()
+const addReviewRouter = express.Router()
 const jsonParser = express.json()
 
 const serializeReview = review => ({
@@ -14,7 +14,7 @@ const serializeReview = review => ({
     created: review.created
 })
 
-addreviewRouter
+addReviewRouter
     .route('/')
     .get((req, res) => {
         res.send('Add reviews get request is working!')
@@ -53,4 +53,4 @@ addreviewRouter
 
     })
 
-module.exports = addreviewRouter
+module.exports = addReviewRouter

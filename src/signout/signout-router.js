@@ -1,7 +1,7 @@
 const express = require('express')
-const logoutRouter = express.Router()
+const signOutRouter = express.Router()
 
-logoutRouter
+signOutRouter
     .route('/')
     .get((req, res) => {
         res.send('logout get request is working')
@@ -11,4 +11,4 @@ logoutRouter
         res.redirect('/signin')
     })
 
-module.exports = logoutRouter
+module.exports = signOutRouter

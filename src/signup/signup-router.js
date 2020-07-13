@@ -2,7 +2,7 @@ const express = require('express')
 const xss = require('xss')
 const SignUpService = require ('./signup-service')
 
-const signupRouter = express.Router()
+const signUpRouter = express.Router()
 const jsonParser = express.json()
 
 const bcrypt = require('bcrypt')
@@ -16,7 +16,7 @@ const serializeUser = user => ({
     created: user.created,
 })
 
-signupRouter
+signUpRouter
     .route('/')
     .get((req, res) => {
         res.send('SignUp get request is working!')
@@ -58,4 +58,4 @@ signupRouter
     })
 
 
-module.exports = signupRouter
+module.exports = signUpRouter

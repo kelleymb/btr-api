@@ -1,10 +1,10 @@
 const express = require('express')
 const passport = require('passport')
 
-const signinRouter = express.Router()
+const signInRouter = express.Router()
 const jsonParser = express.json() 
 
-signinRouter
+signInRouter
     .route('/')
     .get((req, res) => {
         res.send('User has logged out!')
@@ -35,4 +35,4 @@ signinRouter
     })
 
 
-module.exports = signinRouter
+module.exports = signInRouter

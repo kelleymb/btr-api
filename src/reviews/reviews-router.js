@@ -5,6 +5,7 @@ const reviewsRouter = express.Router()
 
 const serializeReview = review => ({
     id: review.id,
+    user_name: review.user_name,
     title: xss(review.title),
     author: xss(review.author),
     content: xss(review.content),
@@ -42,6 +43,28 @@ reviewsRouter
                         return serializeReview(review)}
                     ))
                     console.log(reviews.map(review => serializeReview(review)))
+            })
+            .catch(next)
+    })
+
+reviewsRouter
+    .route('/:user_name')
+    .get((req, res, next) => {
+        const knexInstance = req.app.get('db')
+
+        console.log(req.params.user_name)
+
+        if(!req.params.user_name) {
+            return res.status(400).json({ error: { message: `Oops! User ${req.params.user_name} does not exist. Try again.` } })
+        }
+
+        ReviewsService.getByUser(knexInstance, req.params.user_name)
+            .then(reviews => {
+                res
+                    .status(200)
+                    .json(reviews.map(review => { 
+                        return serializeReview(review)}
+                    ))
             })
             .catch(next)
     })
