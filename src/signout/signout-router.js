@@ -8,7 +8,10 @@ signOutRouter
     })
     .delete((req, res) => {
         req.logOut()
-        res.redirect('/signin')
+        res
+            .status(204)
+            .send('User has signed out!')
+            .redirect('/signin')
     })
 
 module.exports = signOutRouter
