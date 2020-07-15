@@ -28,7 +28,7 @@ function makeReviewsArray() {
 
 const testReviews = makeReviewsArray() 
 
-describe.only('Add Review Endpoint', () => {
+describe('Add Review Endpoint', () => {
   let db
 
   before('make knex instance', () => {
@@ -82,47 +82,43 @@ describe.only('Add Review Endpoint', () => {
         })
       })
     
-      // context('Given a new review is added', () => {
-      //   it('adds a new review', (done) => {
-      //     const newReview = {
-      //       title: 'test-title',
-      //       author: 'test-author',
-      //       content: 'test-content',
-      //       rating: 3,
-      //     }
-      //       return supertest(addReview)
-      //         .post(`/add`)
-      //         .send(newReview)
-      //         .expect(201)
-      //         .expect(res => {
-      //           expect(res.body.title).to.eql(newReview.title)
-      //           expect(res.body.author).to.eql(newReview.author)
-      //           expect(res.body.content).to.eql(newReview.content)
-      //           expect(res.body.rating).to.eql(newReview.rating)
-      //           expect(res.body).to.have.property('id')
-      //           expect(res.body).to.have.property('user_name')
-      //         })
-      //           .then(res =>
-      //             supertest(addReview)
-      //               .expect(res.body)
-      //           )
-      //   })
-      // })
+      context('Given a new review is added', () => {
+        it('adds a new review', (done) => {
+          const newReview = {
+            title: 'test-title',
+            author: 'test-author',
+            content: 'test-content',
+            rating: 3,
+          }
+            return supertest(addReview)
+              .post(`/add`)
+              .send(newReview)
+              .expect(201)
+              .expect(res => {
+                expect(res.body.title).to.eql(newReview.title)
+                expect(res.body.author).to.eql(newReview.author)
+                expect(res.body.content).to.eql(newReview.content)
+                expect(res.body.rating).to.eql(newReview.rating)
+                expect(res.body).to.have.property('id')
+                expect(res.body).to.have.property('user_name')
+              }, done())
+        })
+      })
 
-      // context('Given an XSS attack review', () => {
-      //   it('removes XSS attack content from response', () => {
-      //     const { maliciousReview, expectedReview } = testReviews
-      //     return supertest(addReview)
-      //       .post(`/add`)
-      //       .send(maliciousReview)
-      //       .expect(201)
-      //       .expect(res => {
-      //         expect(res.body.title).to.eql(expectedReview.title)
-      //         expect(res.body.author).to.eql(expectedReview.author)
-      //         expect(res.body.content).to.eql(expectedReview.content)
-      //       })
-      //   })
-      // })
+      context('Given an XSS attack review', () => {
+        it('removes XSS attack content from response', (done) => {
+          const { maliciousReview, expectedReview } = testReviews
+          return supertest(addReview)
+            .post(`/add`)
+            .send(maliciousReview)
+            .expect(201)
+            .expect(res => {
+              expect(res.body.title).to.eql(expectedReview.title)
+              expect(res.body.author).to.eql(expectedReview.author)
+              expect(res.body.content).to.eql(expectedReview.content)
+            }, done())
+        })
+      })
     
       context('Given a review is posted successfully', () => {
         it('responds with 200 containing "Review added successfully posted!"',  (done) => {
