@@ -1,11 +1,11 @@
 const signUp = require('../src/signup/signup-router')
 
-describe('/signup endpoint', () => {
+describe.only('/signup endpoint', () => {
   context('Given a user signs up', () => {
-    it('POST /signup successfully signs up user', () => {
+    it('POST /signup successfully signs up user', (done) => {
     return supertest(signUp)
       .post('/signup')
-      .expect(201, 'User account created!')
+      .expect(201, 'User account created!', done())
     })
 
     it('signs up a user', (done) => {
@@ -24,12 +24,7 @@ describe('/signup endpoint', () => {
           expect(res.body.password).to.eql(user.password)
           expect(res.body).to.have.property('id')
           expect(res.body).to.have.property('created')
-          done()
-        })
-        .then(res =>
-          supertest(signUp)
-            .expect(res.body)
-        )
+        }, done())
     })
   })
   
