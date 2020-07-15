@@ -1,4 +1,4 @@
-const { applyMiddleware, createStore, } = require('redux')
+const { applyMiddleware, createStore } = require('redux')
 const createSagaMiddleware = require('redux-saga')
 const rootReducer = require('./reducers/index')
 const rootSaga = require('./sagas/index')
