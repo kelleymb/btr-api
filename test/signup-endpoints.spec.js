@@ -1,6 +1,6 @@
 const signUp = require('../src/signup/signup-router')
 
-describe.only('/signup endpoint', () => {
+describe('/signup endpoint', () => {
   context('Given a user signs up', () => {
     it('POST /signup successfully signs up user', (done) => {
     return supertest(signUp)
