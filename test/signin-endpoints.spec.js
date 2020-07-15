@@ -8,6 +8,13 @@ const user = {
 describe.only('/signin endpoint', () => {
 
   context('Given a user signs in', () => {
+
+    it('POST /signin successfully signs in user', (done) => {
+      return supertest(signIn)
+        .post('/signin')
+        .expect(200, 'Login Successful!', done())
+    })
+
     it('logs in a user', (done) => {
       return supertest(signIn)
         .post(`/signin`)
@@ -20,13 +27,13 @@ describe.only('/signin endpoint', () => {
         }, done())
       })
 
-  context('Successfully signs in',  () => {
-    it('POST /signin successfully signs in user', (done) => {
-      return supertest(signIn)
-        .post('/signin')
-        .expect(200, 'Login Successful!', done())
-    })
-  })
+  // context('Successfully signs in',  () => {
+  //   it('POST /signin successfully signs in user', (done) => {
+  //     return supertest(signIn)
+  //       .post('/signin')
+  //       .expect(200, 'Login Successful!', done())
+  //   })
+  // })
     
   })
 })
