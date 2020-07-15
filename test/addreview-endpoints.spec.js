@@ -27,7 +27,7 @@ function makeReviewsArray() {
   ]
 }
 
-const testReview = makeReviewsArray() 
+const testReviews = makeReviewsArray() 
 
 describe('Add Review Endpoint', () => {
   let db
@@ -41,8 +41,8 @@ describe('Add Review Endpoint', () => {
   })
 
   after('disconnect from db', () => db.destroy())
-  before('cleanup', () => db('born-to-read').truncate())
-  afterEach('cleanup', () => db('born-to-read').truncate())
+  before('cleanup', () => db('reviews').truncate())
+  afterEach('cleanup', () => db('reviews').truncate())
 
   describe('POST /add', () => {
     ['title', 'author', 'content', 'rating'].forEach(field =>{
@@ -113,7 +113,7 @@ describe('Add Review Endpoint', () => {
     })
 
     it('removes XSS attack content from response', () => {
-      const { maliciousReview, expectedReview } = testReview
+      const { maliciousReview, expectedReview } = testReviews
       return supertest(addReview)
         .post(`/add`)
         .send(maliciousReview)

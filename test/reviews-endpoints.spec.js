@@ -15,31 +15,52 @@ describe('Reviews Endpoint', () => {
     })
 
     after('disconnect from db', () => db.destroy())
-    before('cleanup', () => db('born-to-read').truncate())
-    afterEach('cleanup', () => db('born-to-read').truncate())
+    before('cleanup', () => db('reviews').truncate())
+    afterEach('cleanup', () => db('reviews').truncate())
+
+    const testReviews = [
+        {
+            id: 1,
+            user_name: "Lorem",
+            title: "The Stranger",
+            author: "Albert Camus",
+            content: "A quality work! ",
+            rating: 4,
+            created: "2020-07-08T04:51:32.452Z"
+        },
+        {
+            id: 1,
+            user_name: "LoremIpsum",
+            title: "Ruthless",
+            author: "Lisa Jackson",
+            content: "A quality work! ",
+            rating: 4,
+            created: "2020-04-08T04:51:32.452Z"
+        }
+    ]
 
     describe('GET /reviews', () => {
         context('Given there are reviews in the database', () => {
-            const testReviews = [
-                {
-                    id: 1,
-                    user_name: "Lorem",
-                    title: "The Stranger",
-                    author: "Albert Camus",
-                    content: "A quality work! ",
-                    rating: 4,
-                    created: "2020-07-08T04:51:32.452Z"
-                },
-                {
-                    id: 1,
-                    user_name: "LoremIpsum",
-                    title: "Ruthless",
-                    author: "Lisa Jackson",
-                    content: "A quality work! ",
-                    rating: 4,
-                    created: "2020-04-08T04:51:32.452Z"
-                }
-            ]
+            // const testReviews = [
+            //     {
+            //         id: 1,
+            //         user_name: "Lorem",
+            //         title: "The Stranger",
+            //         author: "Albert Camus",
+            //         content: "A quality work! ",
+            //         rating: 4,
+            //         created: "2020-07-08T04:51:32.452Z"
+            //     },
+            //     {
+            //         id: 1,
+            //         user_name: "LoremIpsum",
+            //         title: "Ruthless",
+            //         author: "Lisa Jackson",
+            //         content: "A quality work! ",
+            //         rating: 4,
+            //         created: "2020-04-08T04:51:32.452Z"
+            //     }
+            // ]
 
             beforeEach('insert articles', () => {
                 return db
@@ -59,26 +80,26 @@ describe('Reviews Endpoint', () => {
   
     describe('GET /reviews/:user_name', () => {
         context('Given there are reviews in the database', () => {
-            const testReviews = [
-                {
-                    id: 1,
-                    user_name: "Lorem",
-                    title: "The Stranger",
-                    author: "Albert Camus",
-                    content: "A quality work! ",
-                    rating: 4,
-                    created: "2020-07-08T04:51:32.452Z"
-                },
-                {
-                    id: 1,
-                    user_name: "LoremIpsum",
-                    title: "Ruthless",
-                    author: "Lisa Jackson",
-                    content: "A quality work! ",
-                    rating: 4,
-                    created: "2020-04-08T04:51:32.452Z"
-                }
-            ]
+            // const testReviews = [
+            //     {
+            //         id: 1,
+            //         user_name: "Lorem",
+            //         title: "The Stranger",
+            //         author: "Albert Camus",
+            //         content: "A quality work! ",
+            //         rating: 4,
+            //         created: "2020-07-08T04:51:32.452Z"
+            //     },
+            //     {
+            //         id: 1,
+            //         user_name: "LoremIpsum",
+            //         title: "Ruthless",
+            //         author: "Lisa Jackson",
+            //         content: "A quality work! ",
+            //         rating: 4,
+            //         created: "2020-04-08T04:51:32.452Z"
+            //     }
+            // ]
 
             beforeEach('insert articles', () => {
                 return db
