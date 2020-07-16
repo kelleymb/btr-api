@@ -25,10 +25,10 @@ signInRouter
         failureFlash: true,
         })
 
-        res
-            .status(200)
-            .send('Login Successful!')
-            .json(user)
+        // res
+        //     .status(200)
+        //     .send('Login Successful!')
+        //     .json(user)
     })
 
 
