@@ -6,9 +6,6 @@ const jsonParser = express.json()
 
 signInRouter
     .route('/')
-    .get((req, res) => {
-        res.send('User has logged out!')
-    })
     .post(jsonParser, (req, res, next) => {
         const { email, password } = req.body
         const user = { email, password } 

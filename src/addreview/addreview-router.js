@@ -16,9 +16,6 @@ const serializeReview = review => ({
 
 addReviewRouter
     .route('/')
-    .get((req, res) => {
-        res.send('Add reviews get request is working!')
-    })
     .post(jsonParser, (req, res, next) => {
         const { title, author, content, rating, user_name } = req.body
         const newReview = { title, author, content, rating, user_name }

@@ -18,9 +18,6 @@ const serializeUser = user => ({
 
 signUpRouter
     .route('/')
-    .get((req, res) => {
-        res.send('SignUp get request is working!')
-    })
     .post(jsonParser, (req, res, next) => {
         const { user_name, email, password } = req.body
         const newUser = { user_name, email, password }
