@@ -24,11 +24,6 @@ signInRouter
         failureRedirect: '/signin',
         failureFlash: true,
         })
-
-        // res
-        //     .status(200)
-        //     .send('Login Successful!')
-        //     .json(user)
     })
 
 
