@@ -5,5 +5,6 @@ module.exports = {
     SESSION_SECRET: process.env.SESSION_SECRET || 'dummyy-session-secret',
     DATABASE_URL: process.env.DATABASE_URL || 'postgresql://dunder_mifflin@localhost/born-to-read',
     TEST_DATABASE_URL: process.env.TEST_DATABASE_URL || 'postgresql://dunder_mifflin@localhost/born-to-read',
-    CLIENT_ORIGIN: 'https://btr-client.kelleymb.vercel.app/'
+    // CLIENT_ORIGIN: 'https://btr-client.kelleymb.vercel.app/',
+//     CLIENT_ORIGIN: 'http://localhost:3000/'
 }
