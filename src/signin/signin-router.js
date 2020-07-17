@@ -25,6 +25,11 @@ signInRouter
             failureFlash: true,
         })
 
+        // passport.authenticate('local', { failureRedirect: '/signin'}),
+        //     function(req, res) {
+        //         res.redirect('/add')
+        //     }
+
         // passport.authenticate('local', function(err, user, info) {
         //     if (err) { return next(err); }
         //     // Redirect if it fails
