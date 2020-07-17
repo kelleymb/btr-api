@@ -43,7 +43,6 @@ addReviewRouter
         .then(review => {
             res
                 .status(201)
-                .send('Review added successfully posted!')
                 .json(serializeReview(review))
         })
         .catch(next)

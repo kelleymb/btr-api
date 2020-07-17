@@ -10,7 +10,6 @@ const signInRouter = require('./signin/signin-router')
 const signOutRouter = require('./signout/signout-router')
 const reviewsRouter = require('./reviews/reviews-router')
 const addReviewRouter = require('./addreview/addreview-router')
-const panelRouter = require('./panel/panel-router')
 
 const session = require('express-session')
 const flash = require('express-flash')
@@ -61,7 +60,6 @@ app.use('/signin', signInRouter)
 app.use('/signout', signOutRouter)
 app.use('/reviews', reviewsRouter)
 app.use('/add', addReviewRouter)
-app.use('/panel', panelRouter)
 
 //error handler middleware
 app.use(function errorHandler(error, req, res, next) {

@@ -1,4 +1,5 @@
 const express = require('express')
+const passport = require('passport')
 const signOutRouter = express.Router()
 
 signOutRouter
