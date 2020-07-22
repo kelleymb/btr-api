@@ -48,7 +48,7 @@ app.use(methodOverride('method'))
 
 //testing endpoints
 app.get('/', (req, res) => {
-    res.send('Hello, world!')
+    res.send('Home')
 })
 //testing endpoints
 app.get('/api/*', (req, res) => {

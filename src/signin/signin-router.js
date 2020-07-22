@@ -41,7 +41,7 @@ signInRouter
         //     });
         //   })(req, res, next);
 
-        
+        res.json({ message: "user sign in successful" })
     })
 
 

@@ -1,15 +1,12 @@
 const express = require('express')
-const passport = require('passport')
 const signOutRouter = express.Router()
 
 signOutRouter
     .route('/')
-    .delete((req, res) => {
+    .get((req, res) => {
+        req.session.destroy()
         req.logOut()
-        res
-            .status(204)
-            .send('User has signed out!')
-            .redirect('/signin')
+        res.redirect('/')
     })
 
 module.exports = signOutRouter
