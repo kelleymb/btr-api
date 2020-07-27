@@ -1,5 +1,7 @@
 const express = require('express')
 const passport = require('passport')
+const randtoken = require('rand-token')
+// const jwt = require('jsonwebtoken')
 
 const signInRouter = express.Router()
 const jsonParser = express.json() 
@@ -8,8 +10,9 @@ signInRouter
     .route('/')
     .post(jsonParser, (req, res, next) => {
         const { email, password } = req.body
-        const user = { email, password } 
-        
+        const user = { email, password }
+        const token = randtoken.generate(32) 
+        // const token = jwt.sign({  })
         const initializePassport = require('./passport-config')
         
 
@@ -25,23 +28,9 @@ signInRouter
             failureFlash: true,
         })
 
-        // passport.authenticate('local', { failureRedirect: '/signin'}),
-        //     function(req, res) {
-        //         res.redirect('/add')
-        //     }
-
-        // passport.authenticate('local', function(err, user, info) {
-        //     if (err) { return next(err); }
-        //     // Redirect if it fails
-        //     if (!user) { return res.redirect('/signin'); }
-        //     req.logIn(user, function(err) {
-        //       if (err) { return next(err); }
-        //       // Redirect if it succeeds
-        //       return res.redirect('/add');
-        //     });
-        //   })(req, res, next);
-
-        res.json({ message: "user sign in successful" })
+        // res.json({ message: "user sign in successful" })
+        res.setHeader("Token", token)
+        res.send(token)
     })
 
 

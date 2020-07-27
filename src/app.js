@@ -34,16 +34,27 @@ app.use(cors({
         }
         return callback(null, true)
     }}))
-app.use(helmet())
 
+app.use(helmet())
 app.use(flash())
-app.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false
-}))
 app.use(passport.initialize())
 app.use(passport.session())
+
+app.set('trust proxy', 1)
+// app.use(session({
+//     secret: process.env.SESSION_SECRET,
+//     resave: false,
+//     saveUninitialized: true,
+//     cookie: { secure: true }
+// }))
+app.use(session({
+    uuid: function(req) {
+        return uuid()
+    },
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true
+}))
 app.use(methodOverride('method'))
 
 //testing endpoints
