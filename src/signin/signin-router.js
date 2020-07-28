@@ -27,13 +27,13 @@ signInRouter
             failureFlash: true,
         })
 
-        const knexInstance = req.app.get('db')
-        SignInService.getUserNameByEmail(knexInstance, email)
-            .then(userName => {
-                console.log(userName)
-                res
-                    .setHeader('Username', userName)
-            })
+        // const knexInstance = req.app.get('db')
+        // SignInService.getUserNameByEmail(knexInstance, email)
+        //     .then(userName => {
+        //         console.log(userName)
+        //         res
+        //             .setHeader('Username', userName)
+        //     })
 
         res.setHeader('Token', token)
         res.send('User sign in successful')

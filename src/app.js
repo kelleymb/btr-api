@@ -26,7 +26,7 @@ const morganOption = (NODE_ENV === 'production')
 app.use(morgan(morganOption))
 const allowedOrigins = ['http://localhost:3000', 'https://btr-client.kelleymb.vercel.app']
 app.use(cors({
-    exposedHeaders: 'Token, Username', 
+    exposedHeaders: 'Token', 
     origin: function(origin, callback) {
         if(!origin) return callback(null, true);
         if(allowedOrigins.indexOf(origin) === -1) {
@@ -42,12 +42,6 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 app.set('trust proxy', 1)
-// app.use(session({
-//     secret: process.env.SESSION_SECRET,
-//     resave: false,
-//     saveUninitialized: true,
-//     cookie: { secure: true }
-// }))
 app.use(session({
     uuid: function(req) {
         return uuid()
