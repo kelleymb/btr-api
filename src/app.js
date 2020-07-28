@@ -26,6 +26,7 @@ const morganOption = (NODE_ENV === 'production')
 app.use(morgan(morganOption))
 const allowedOrigins = ['http://localhost:3000', 'https://btr-client.kelleymb.vercel.app']
 app.use(cors({
+    exposedHeaders: 'Token, Username', 
     origin: function(origin, callback) {
         if(!origin) return callback(null, true);
         if(allowedOrigins.indexOf(origin) === -1) {

@@ -12,6 +12,13 @@ const SignInService = {
             .select('*')
             .where('id', id)
             .first()
+    },
+    getUserNameByEmail(knex, email, user_name) {
+        return knex
+            .from('users')
+            .select(user_name)
+            .where('email', email)
+            .first()
     }
 }
 
