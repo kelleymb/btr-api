@@ -1,7 +1,6 @@
 const knex = require('knex')
 const addReview = require('../src/addreview/addreview-router')
 const app = require('../src/app')
-// const { delete } = require('../src/app')
 
 function makeReviewsArray() {
   return [
@@ -34,7 +33,7 @@ describe('Add Review Endpoint', () => {
   before('make knex instance', () => {
     db = knex({
       client: 'pg',
-      connection: process.env.TEST_DB_URL,
+      connection: process.env.TEST_DATABASE_URL,
     })
     app.set('db', db)
   })
