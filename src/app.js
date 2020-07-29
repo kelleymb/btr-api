@@ -24,6 +24,7 @@ const morganOption = (NODE_ENV === 'production')
   : 'common';
 
 app.use(morgan(morganOption))
+app.use(helmet())
 const allowedOrigins = ['http://localhost:3000', 'https://btr-client.kelleymb.vercel.app']
 app.use(cors({
     exposedHeaders: 'Token', 
@@ -36,7 +37,7 @@ app.use(cors({
         return callback(null, true)
     }}))
 
-app.use(helmet())
+
 app.use(flash())
 app.use(passport.initialize())
 app.use(passport.session())
