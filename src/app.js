@@ -44,9 +44,9 @@ app.use(passport.session())
 
 app.set('trust proxy', 1)
 app.use(session({
-    uuid: function(req) {
-        return uuid()
-    },
+    // uuid: function(req) {
+    //     return uuid()
+    // },
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true
