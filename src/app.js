@@ -4,7 +4,7 @@ const morgan = require('morgan')
 const cors = require('cors')
 const helmet = require('helmet')
 const { NODE_ENV } = require('./config')
-
+const { SESSION_SECRET } = require('./config')
 const signUpRouter = require('./signup/signup-router')
 const signInRouter = require('./signin/signin-router')
 const signOutRouter = require('./signout/signout-router')
@@ -44,10 +44,10 @@ app.use(passport.session())
 
 app.set('trust proxy', 1)
 app.use(session({
-    // uuid: function(req) {
-    //     return uuid()
-    // },
-    secret: 'somevalue',
+    uuid: function(req) {
+        return uuid()
+    },
+    secret: SESSION_SECRET,
     resave: false,
     saveUninitialized: true
 }))
