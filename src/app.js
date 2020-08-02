@@ -47,7 +47,7 @@ app.use(session({
     // uuid: function(req) {
     //     return uuid()
     // },
-    secret: process.env.SESSION_SECRET,
+    secret: 'somevalue',
     resave: false,
     saveUninitialized: true
 }))
