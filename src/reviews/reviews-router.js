@@ -17,10 +17,9 @@ reviewsRouter
     .route('/')
     .get((req, res, next) => {
         const { rating } = req.query
-
-        const knexInstance = req.app.get('db')
-
         console.log(rating)
+        
+        const knexInstance = req.app.get('db')
 
         const ratingNumber = Number(rating)
 
