@@ -1,6 +1,6 @@
 {
   "name": "btr-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Server for Born To Read Client",
   "main": "index.js",
   "scripts": {
@@ -27,7 +27,7 @@
     "express-flash": "0.0.2",
     "express-session": "^1.17.1",
     "helmet": "^3.22.0",
-    "knex": "^0.21.1",
+    "knex": "^0.21.21",
     "method-override": "^3.0.0",
     "morgan": "^1.10.0",
     "passport": "^0.4.1",

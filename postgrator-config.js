@@ -7,5 +7,7 @@ module.exports = {
         ? process.env.TEST_DATABASE_URL
         : process.env.DATABASE_URL,
         //deploy prep
-        ssl: {rejectUnauthorized: false}
+      //previous ssl setting
+      //  ssl: { rejectUnauthorized: false} 
+      ssl: process.env.DATABASE_URL ? true : false
 }
