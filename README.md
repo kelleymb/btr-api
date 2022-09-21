@@ -1,6 +1,6 @@
 ## Born To Read API
 
-This is the backend for Born To Read. A live version of this app can be found at: https://btr-client.kelleymb.vercel.app/
+This is the backend for Born To Read. A live version of this app can be found at: https://btr-client-kelleymb.vercel.app/
 
 The front end client can be found at: https://github.com/kelleymb/btr-client
 
